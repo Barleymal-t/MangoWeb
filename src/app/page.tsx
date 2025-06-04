@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <ModeToggle/>
-      <Button onClick={()=>router.push("/login")}>Click me</Button>
+      <Button onClick={()=>router.push("/auth/signin")}>Click me</Button>
     </div>
   )
 }
