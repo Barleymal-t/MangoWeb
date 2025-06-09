@@ -29,6 +29,7 @@ export function LoginForm({
     className,
     ...props
 }: React.ComponentPropsWithoutRef<"div">) {
+    const baseUrl= process.env.NEXT_PUBLIC_API_BASE_URL;
     const [isLogin, setIsLogin] = useState(true);
     // 1. Define your form.
     const form = useForm<z.infer<typeof loginSchema | typeof signupSchema>>({
@@ -40,6 +41,7 @@ export function LoginForm({
         },
     });
     const router = useRouter();
+    console.log(baseUrl);
 
     // 2. Define a submit handler.
     async function login(values: z.infer<typeof loginSchema>) {
@@ -88,6 +90,7 @@ export function LoginForm({
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">Welcome back</CardTitle>
                     <CardDescription>
+                        {`${baseUrl}/dashboard`}
                         {isLogin
                             ? "Login with your Apple or Google account"
                             : "Sign up with your Apple or Google account"}
@@ -99,7 +102,7 @@ export function LoginForm({
                             <Button
                                 onClick={() =>
                                     signIn("apple", {
-                                        callbackUrl: `${process.env.NEXTAUTH_URL}/dashboard`,
+                                        callbackUrl: `${baseUrl}/dashboard`,
                                     })
                                 }
                                 variant="outline"
@@ -117,7 +120,7 @@ export function LoginForm({
                             <Button
                                 onClick={() =>
                                     signIn("google", {
-                                        callbackUrl: `${process.env.NEXTAUTH_URL}/dashboard`,
+                                        callbackUrl: `${baseUrl}/dashboard`,
                                     })
                                 }
                                 variant="outline"
