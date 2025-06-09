@@ -8,6 +8,17 @@ import bcrypt from "bcrypt";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
 const authOptions: NextAuthOptions = {
+  cookies: {
+    callbackUrl: {
+      name: `__Secure-next-auth.callback-url`,
+      options: {
+        httpOnly: true,
+        sameSite: "none",
+        path: "/dashboard",
+        secure: true,
+      },
+    },
+  },
     adapter: PrismaAdapter(prisma),
     session: {
         strategy: "jwt",
@@ -55,6 +66,10 @@ const authOptions: NextAuthOptions = {
             },
         }),
     ],
+
+    pages: {
+        signIn: "/auth/signin", // your custom page
+    },
     callbacks: {
         async jwt({ token, user }) {
             if (user) {
