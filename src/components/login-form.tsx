@@ -52,15 +52,7 @@ export function LoginForm({
         if (!res) {
             return null;
         }
-        // const res = await fetch("http://localhost:5000/api/auth/login", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(values),
-        // });
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+
         console.log(values, res);
 
         if (res.ok) {
