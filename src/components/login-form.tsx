@@ -99,7 +99,7 @@ export function LoginForm({
                             <Button
                                 onClick={() =>
                                     signIn("apple", {
-                                        callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`,
+                                        callbackUrl: `${process.env.NEXTAUTH_URL}/dashboard`,
                                     })
                                 }
                                 variant="outline"
@@ -117,7 +117,7 @@ export function LoginForm({
                             <Button
                                 onClick={() =>
                                     signIn("google", {
-                                        callbackUrl: `${process.env.NEXT_PUBLIC_BASE_URL}/dashboard`,
+                                        callbackUrl: `${process.env.NEXTAUTH_URL}/dashboard`,
                                     })
                                 }
                                 variant="outline"
